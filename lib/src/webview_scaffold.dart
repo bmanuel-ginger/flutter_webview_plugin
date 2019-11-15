@@ -109,10 +109,12 @@ class _WebviewScaffoldState extends State<WebviewScaffold> {
     if (widget.hidden) {
       _onStateChanged =
           webviewReference.onStateChanged.listen((WebViewStateChanged state) {
-        if (state.type == WebViewState.finishLoad) {
-          webviewReference.show();
-        }
-      });
+            if (state.type == WebViewState.finishLoad) {
+              Future.delayed(Duration(milliseconds: 200), () {
+                webviewReference.show();
+              });
+            }
+          });
     }
   }
 
